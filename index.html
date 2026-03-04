@@ -3,172 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biraj Biswas | Digital Portfolio</title>
+    <title>Biraj Biswas | Digital Portfolio & Assistant</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Dark Mode & Neon Accents --- */
+        /* --- PORTFOLIO STYLES (ORIGINAL) --- */
         :root {
-            --primary-color: #3b82f6; /* Electric Blue */
+            --primary-color: #3b82f6; 
             --accent-glow: rgba(59, 130, 246, 0.5);
-            --bg-dark: #0f172a;       /* Deep Obsidian */
-            --bg-card: #1e293b;       /* Slate Grey */
-            --text-main: #f8fafc;     /* Off White */
-            --text-dim: #94a3b8;      /* Muted Slate */
+            --bg-dark: #0f172a;       
+            --bg-card: #1e293b;       
+            --text-main: #f8fafc;     
+            --text-dim: #94a3b8;      
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --chat-bg: #1e293b;
+            --chat-text: #f8fafc;
         }
 
-        /* --- Base Reset --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        .container { width: 90%; max-width: 1100px; margin: 0 auto; }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        /* --- UI Components --- */
         .btn-primary {
-            display: inline-block;
-            padding: 14px 28px;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px var(--accent-glow);
+            display: inline-block; padding: 14px 28px; background: var(--primary-color);
+            color: white; text-decoration: none; border-radius: 8px; font-weight: 600;
+            transition: var(--transition); box-shadow: 0 4px 15px var(--accent-glow);
+            border: none; cursor: pointer;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px var(--accent-glow);
-        }
-
-        /* --- Navbar --- */
         .navbar {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(12px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            color: var(--text-main);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--text-main); text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); transition: var(--transition); }
         .nav-links a:hover { color: var(--primary-color); }
 
-        /* --- Hero Section --- */
-        .hero {
-            padding: 180px 0 100px;
-            text-align: center;
-        }
-
+        .hero { padding: 180px 0 100px; text-align: center; }
         .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            margin-bottom: 1.5rem;
+            font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 1.5rem;
             background: linear-gradient(90deg, #fff, var(--primary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p { color: var(--text-dim); font-size: 1.2rem; max-width: 650px; margin: 0 auto 2.5rem; }
+
+        .services, .skills, .contact { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2rem; color: #fff; }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { background: var(--bg-card); padding: 3rem 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); }
+        .card:hover { border-color: var(--primary-color); transform: scale(1.02); }
+        .card .icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
+
+        /* --- SKILLS SECTION --- */
+        .skills-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+        .skill-tag { background: #334155; padding: 10px 20px; border-radius: 50px; color: var(--primary-color); font-weight: 600; font-size: 0.9rem; border: 1px solid rgba(59, 130, 246, 0.3); }
+
+        /* --- CONTACT SECTION --- */
+        .contact-form { max-width: 600px; margin: 0 auto; background: var(--bg-card); padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-dim); }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #fff; outline: none; }
+        .form-group textarea { height: 120px; resize: vertical; }
+
+        /* --- CHAT INTERFACE STYLES --- */
+        #chat-trigger {
+            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
+            background-color: var(--primary-color); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1001; transition: transform 0.2s;
         }
 
-        .hero p {
-            color: var(--text-dim);
-            font-size: 1.2rem;
-            max-width: 650px;
-            margin: 0 auto 2.5rem;
+        .chat-container {
+            position: fixed; bottom: 90px; right: 20px; width: 380px;
+            max-width: calc(100% - 40px); height: 500px;
+            background: var(--bg-card); border-radius: 12px;
+            display: none; flex-direction: column;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            overflow: hidden; z-index: 1001; border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* --- Services Grid --- */
-        .services { padding: 100px 0; }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .chat-header { background: var(--primary-color); color: white; padding: 16px; display: flex; justify-content: space-between; align-items: center; }
+        .chat-messages { flex: 1; padding: 16px; overflow-y: auto; background: #111827; display: flex; flex-direction: column; gap: 12px; }
+        .message { max-width: 85%; padding: 10px 14px; border-radius: 12px; font-size: 14px; }
+        .bot-msg { background: #334155; color: white; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .user-msg { background: var(--primary-color); color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .chat-input-area { padding: 16px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; background: var(--bg-card); }
+        
+        input#user-input {
+            flex: 1; background: #0f172a; border: 1px solid #334155;
+            padding: 10px; border-radius: 6px; color: white; outline: none;
         }
 
-        .card {
-            background: var(--bg-card);
-            padding: 3rem 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: var(--transition);
-        }
+        button#send-btn { background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; }
 
-        .card:hover {
-            border-color: var(--primary-color);
-            transform: scale(1.02);
-        }
-
-        .card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .card h3 { margin-bottom: 1rem; }
-        .card p { color: var(--text-dim); font-size: 0.95rem; }
-
-        /* --- Mobile Styles --- */
         .hamburger { display: none; cursor: pointer; }
         .bar { display: block; width: 25px; height: 2px; background: white; margin: 6px 0; }
 
         @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 80px; left: -100%;
-                flex-direction: column;
-                background: var(--bg-dark);
-                width: 100%; height: 100vh;
-                padding-top: 50px;
-                transition: 0.4s;
-            }
+            .nav-links { position: fixed; top: 80px; left: -100%; flex-direction: column; background: var(--bg-dark); width: 100%; height: 100vh; padding-top: 50px; transition: 0.4s; }
             .nav-links.active { left: 0; }
             .hamburger { display: block; }
+            .chat-container { bottom: 0; right: 0; width: 100%; height: 100%; max-height: 100vh; border-radius: 0; }
         }
     </style>
 </head>
@@ -179,13 +121,11 @@
             <a href="#" class="logo">BIRAJ.</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#services">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact" class="btn-primary">Get In Touch</a></li>
             </ul>
             <div class="hamburger" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
         </div>
     </nav>
@@ -194,7 +134,21 @@
         <div class="container">
             <h1>Building the Future of the Web</h1>
             <p>I specialize in creating high-performance, responsive applications with a focus on clean code and user-centric design.</p>
-            <a href="#contact" class="btn-primary">View Projects</a>
+            <a href="#skills" class="btn-primary">View My Work</a>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">My Technical Stack</h2>
+            <div class="skills-container">
+                <span class="skill-tag">HTML5 & CSS3</span>
+                <span class="skill-tag">JavaScript (ES6+)</span>
+                <span class="skill-tag">UI/UX Design</span>
+                <span class="skill-tag">Responsive Web Design</span>
+                <span class="skill-tag">Web APIs</span>
+                <span class="skill-tag">GitHub</span>
+            </div>
         </div>
     </section>
 
@@ -220,13 +174,152 @@
         </div>
     </section>
 
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Send a Message</h2>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="Your Name" id="contact-name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Your Email" id="contact-email">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea placeholder="How can I help you?" id="contact-msg"></textarea>
+                </div>
+                <button class="btn-primary" style="width:100%" onclick="notifyDeveloper('Form Submission', document.getElementById('contact-msg').value)">Send Message</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="chat-trigger">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </div>
+
+    <div class="chat-container" id="chat-window">
+        <div class="chat-header">
+            <strong>Assistant</strong>
+            <span style="cursor:pointer" onclick="toggleChat()">✕</span>
+        </div>
+        <div class="chat-messages" id="chat-box">
+            <div class="message bot-msg">Hello! I'm Biraj's AI assistant. How can I help you?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="user-input" placeholder="Ask me about Biraj..." onkeypress="handleKey(event)">
+            <button id="send-btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
     <script>
+        // NAVIGATION LOGIC
         const menu = document.getElementById('mobile-menu');
         const links = document.querySelector('.nav-links');
+        menu.onclick = () => { links.classList.toggle('active'); };
 
-        menu.onclick = () => {
-            links.classList.toggle('active');
-        };
+        // CHAT LOGIC
+        const chatWindow = document.getElementById('chat-window');
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+
+        function toggleChat() {
+            chatWindow.style.display = (chatWindow.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        document.getElementById('chat-trigger').onclick = toggleChat;
+
+        // --- DEVELOPER NOTIFICATION SYSTEM ---
+        // This function sends user messages to you.
+        function notifyDeveloper(type, message) {
+            console.log(`LOG TO DEVELOPER: [${type}] - ${message}`);
+            
+            /* TO GET REAL NOTIFICATIONS ON YOUR PHONE:
+            1. Create a Discord Server -> Server Settings -> Integrations -> Webhooks.
+            2. Paste the Webhook URL below.
+            */
+            const webhookURL = "YOUR_DISCORD_WEBHOOK_URL_HERE"; 
+
+            if(webhookURL.includes("http")) {
+                fetch(webhookURL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ content: `**New ${type} from Portfolio:**\n${message}` })
+                });
+            }
+        }
+
+        async function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+            
+            // Send log to developer
+            notifyDeveloper("Chat Message", text);
+
+            addMessage(text, 'user-msg');
+            userInput.value = '';
+            const typingId = addMessage("Typing...", 'bot-msg');
+            
+            const botResponse = await getBotResponse(text);
+            setTimeout(() => {
+                updateMessage(typingId, botResponse);
+            }, 600);
+        }
+
+        async function getBotResponse(input) {
+            const query = input.toLowerCase();
+
+            if (query.includes("time")) {
+                return "The current time is " + new Date().toLocaleTimeString();
+            }
+
+            if (query.includes("weather")) {
+                try {
+                    const res = await fetch('https://wttr.in/?format=%C+%t');
+                    const data = await res.text();
+                    return "The current weather is: " + data;
+                } catch (e) {
+                    return "I can't reach the weather station right now.";
+                }
+            }
+
+            if (query.includes("who developed you") || query.includes("created you") || query.includes("who made you")) {
+                return "I was created by Biraj Biswas.";
+            }
+            if (query.includes("hi") || query.includes("hello")) {
+                return "Hello! How can I assist you today?";
+            }
+            if (query.includes("how are you")) {
+                return "I am fine😁. How are you?";
+            }
+            if (query.includes("i am fine")) {
+                return "Ok, how can I help you.";
+            }
+            if (query.includes("what is the full form of AI")) {
+                return "The full form AI is Artificial Intelligence.";
+            }
+            
+            return "Nice to meet you. Thanks for your message!";
+        }
+
+        function addMessage(text, className) {
+            const msgDiv = document.createElement('div');
+            const id = 'msg-' + Date.now();
+            msgDiv.id = id;
+            msgDiv.className = `message ${className}`;
+            msgDiv.innerText = text;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return id;
+        }
+
+        function updateMessage(id, newText) {
+            const msgDiv = document.getElementById(id);
+            if (msgDiv) msgDiv.innerText = newText;
+        }
+
+        function handleKey(e) { if (e.key === 'Enter') sendMessage(); }
     </script>
 </body>
 </html>
